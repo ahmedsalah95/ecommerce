@@ -1,16 +1,16 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/user', function (Request $request) {
-//    return $request->user();
-//})->middleware('auth:api');
-
 Route::group(['middleware'=>['auth:api']],function (){
 
-
+    Route::post('/products',[ProductsController::class,'createProduct']);
+    Route::get('/products/{id}',[ProductsController::class,'getProduct']);
+    Route::put('/products/{id}',[ProductsController::class,'updateProduct']);
+    Route::delete('/products/{id}',[ProductsController::class,'deleteProduct']);
 
 });
 

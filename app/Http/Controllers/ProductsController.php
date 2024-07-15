@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Repositories\Interfaces\ProductInterface;
-use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -15,5 +15,17 @@ class ProductsController extends Controller
     }
     public function createProduct(CreateProductRequest $request){
         return $this->productInterface->createProduct($request);
+    }
+
+    public function getProduct($id){
+        return $this->productInterface->getProduct($id);
+    }
+
+    public function updateProduct($id,UpdateProductRequest $request){
+        return $this->productInterface->updateProduct($id,$request);
+    }
+
+    public function deleteProduct($id){
+        return $this->productInterface->deleteProduct($id);
     }
 }
