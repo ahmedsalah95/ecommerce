@@ -9,7 +9,6 @@ use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Validation\ValidationException;
 
 class ProductRepository implements ProductInterface
 {
