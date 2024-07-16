@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: Ecommerce API
+  version: 1.0.0
+paths:
+  /api/login:
+    post:
+      summary: Login endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successfully logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  code:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Logged in successfully!
+                  data:
+                    type: object
+                    properties:
+                      payload:
+                        type: object
+                        properties:
+                          token:
+                            type: string
+                            example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9..."
+  /api/register:
+    post:
+      summary: Register endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses: {}
+  /api/products:
+    post:
+      summary: Create product endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                category_id:
+                  type: integer
+      responses:
+        '201':
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  code:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: Product created successfully
+                  data:
+                    type: object
+                    properties:
+                      payload:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          description:
+                            type: string
+                          price:
+                            type: number
+                          category_id:
+                            type: integer
+                          updated_at:
+                            type: string
+                            format: date-time
+                          created_at:
+                            type: string
+                            format: date-time
+                          id:
+                            type: integer
+                            example: 11
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: Successfully retrieved products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    price:
+                      type: number
+                    category_id:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+  /api/products/{productId}:
+    parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get product by ID
+      responses:
+        '200':
+          description: Successfully retrieved product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  price:
+                    type: number
+                  category_id:
+                    type: integer
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+    put:
+      summary: Update product by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: number
+                category_id:
+                  type: integer
+      responses: {}
+    delete:
+      summary: Delete product by ID
+      responses: {}
+  /api/products/{productId}/rating:
+    parameters:
+      - name: productId
+        in: path
+        required: true
+        schema:
+          type: integer
+    put:
+      summary: Update product rating by ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: number
+      responses: {}
+  /api/reviews:
+    post:
+      summary: Add review endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                review_content:
+                  type: string
+                rating:
+                  type: number
+                product_id:
+                  type: integer
+      responses: {}

@@ -1,0 +1,12 @@
+
+# E-commerce app
+
+Assumptions:
+
+- I assumed that there is a Table called Reviews to handle product reviews ( table columns available in migrations folder )
+
+- Pattern used : Repository pattern
+- Development and Deployment : local ( Docker available )
+- Caching : Redis
+- Security : Passport JWT
+- Version control : Git & Github

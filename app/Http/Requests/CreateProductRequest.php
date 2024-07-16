@@ -28,11 +28,4 @@ class CreateProductRequest extends FormRequest
             'category_id' => 'required|integer|exists:categories,id',
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'name.required' => 'Product name is required.',
-        ];
-    }
 }

@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "3b23cb0f-461b-4a9c-b2eb-9f880fa11cad",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4228065",
+		"_collection_link": "https://affixteam.postman.co/workspace/Team-Workspace~bf00b78e-617f-427d-8100-f1b0b728ab90/collection/4228065-3b23cb0f-461b-4a9c-b2eb-9f880fa11cad?action=share&source=collection_link&creator=4228065"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"admin@user.com\",\r\n    \"password\":\"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user@user.com\",\r\n    \"password\":\"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 Jul 2024 20:31:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Logged in successfully!\",\n    \"data\": {\n        \"payload\": {\n            \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTc3YjdkYjY4NmFhOTc2ZmI4MjdiODc5NTE2MDFiNzMyNDZlOWIxNmQ3OTZhMzFlZTQ0ZTFlZmEwZmUzNDI4ZGRlOGFhMWJkODhlZjdmMWUiLCJpYXQiOjE3MjExNjE5MDEuMjU5NDI5LCJuYmYiOjE3MjExNjE5MDEuMjU5NDM1LCJleHAiOjE3NTI2OTc5MDEuMDU0MDYzLCJzdWIiOiI2Iiwic2NvcGVzIjpbXX0.hCEjuMzxR7PkJGNy2dml6stG4g3h_esNpEY0sgqe8RIpp36PIcW-DHKXfZcBIKCdvRO_BZQTV1b7nltAGo9IV4PoIqV6Tkd0Y1FhccYEVU44GxEHxqeNjZ2Z32w-dl7IKWFUKk-x6Xc_HrznihAuWAIEfhHAjM23DQKYDxa2zGl5gcQ2Dwm-OhfrUCMGy0v38zkV07mBGYtIWayT_lQS5Tea3-8uQkebpBmemmn1g0uVoGhHCftWZT4pvh-FiVtdMtA0tqbMRmZratwgx5byZKseofgBZddfpIjnneOcouIi-szYDskmOfJYIixHYEUFAl3vxmsfaL1CoZMT5YRuyaDZvrOtWN79Vxj0DzCzwYwPG88alVqYvSStD8VoyDtzcPg8J4S459Ucu2jp-N5UFb6HgQhVWBDYPzehSD58OXaJIJcQTGl2kwB3H1USZPX39LssKpuZuROolDK2Z218MwGE6E-CXcxvUGwvVGNvmdGkQ5YfzPzXUIUjtn84AmW20wNKS_3qQT01caXwYPntHjwYjdoG3u7yIucHh7IqjpuUn651-0hQtkFDnyae6Y--g5B-XSDlF6u9za31JnuECYunONlVBHwqLwoAjks-LNsU2Se1m5kfaxJ70ZxdQgF9FvcDM_AEzdW702fUxM-Al0cOAS3Pf2F-8dYCIsNEw_w\"\n        }\n    },\n    \"locale\": \"en\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\" :\"user 2\",\r\n      \"email\" : \"user2@admin.com\",\r\n      \"password\" :\"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"test product user\",\r\n \"description\":\"test test 2\",\r\n \"price\":1100,\r\n \"category_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\":\"test product user\",\r\n \"description\":\"test test 2\",\r\n \"price\":1100,\r\n \"category_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/products",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 16 Jul 2024 20:32:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Product created successfully\",\n    \"data\": {\n        \"payload\": {\n            \"name\": \"test product user\",\n            \"description\": \"test test 2\",\n            \"price\": 1100,\n            \"category_id\": 1,\n            \"updated_at\": \"2024-07-16T20:32:18.000000Z\",\n            \"created_at\": \"2024-07-16T20:32:18.000000Z\",\n            \"id\": 11\n        }\n    },\n    \"locale\": \"en\"\n}"
+				}
+			]
+		},
+		{
+			"name": "add review",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"review_content\":\"test content3\",\r\n \"rating\":3,\r\n \"product_id\":8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reviews",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"test product edit\",\r\n \"description\":\"test test edit\",\r\n \"price\":1001,\r\n \"category_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product rating",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"rating\":2.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/8/rating",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"8",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/ 8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						" 8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/ 7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						" 7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
