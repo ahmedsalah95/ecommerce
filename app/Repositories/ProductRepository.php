@@ -9,6 +9,7 @@ use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Validation\ValidationException;
 
 class ProductRepository implements ProductInterface
 {
@@ -16,12 +17,17 @@ class ProductRepository implements ProductInterface
     use ApiResponse;
     public function createProduct($request): JsonResponse
     {
-        $user = Auth::user();
-        if(!$user->hasRole('Admin')){
-           return $this->error("you don't have permission to create product",401);
+        try{
+            $user = Auth::user();
+            if(!$user->hasRole('Admin')){
+                return $this->error("you don't have permission to create product",401);
+            }
+            $product = Product::create($request->all());
+            return $this->success( $product,'Product created successfully', 201);
+        }catch (\Exception $e){
+            return $this->error($e,422);
         }
-        $product = Product::create($request->all());
-        return $this->success( $product,'Product created successfully', 201);
+
     }
 
     public function getProduct($id)
