@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\ProductInterface;
 use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ProductRepository implements ProductInterface
 {
@@ -32,29 +33,43 @@ class ProductRepository implements ProductInterface
         return $this->success($product,'Product retrieved successfully', 200);
     }
 
+
+
     public function getProducts($request)
     {
-        $products = Product::query();
+        $cacheKey = 'products_' . md5(json_encode($request->all()));
+        $cacheTags = ['products'];
+
         if ($request->has('category_id')) {
-            $products->where('category_id', $request->category_id);
+            $cacheTags[] = 'category_' . $request->category_id;
         }
-        if ($request->has('category_name')) {
-            $products->whereHas('category', function ($query) use ($request) {
-                $query->where('name', 'like', '%' . $request->category_name . '%');
-            });
+        if(Cache::has($cacheKey)){
+            return Cache::get($cacheKey);
         }
-        if ($request->has('name')) {
-            $products->where('name', 'like', '%' . $request->name . '%');
-        }
+        return Cache::tags($cacheTags)->remember($cacheKey, 60, function () use ($request) {
+            $products = Product::query();
 
-        if ($request->has('order_by') && $request->order_by === 'rating') {
-            $direction = $request->has('direction') && $request->direction === 'desc' ? 'desc' : 'asc';
-            $products->orderBy('rating', $direction);
-        }
-        $products = $products->with('reviews')->paginate(15);
+            if ($request->has('category_id')) {
+                $products->where('category_id', $request->category_id);
+            }
+            if ($request->has('category_name')) {
+                $products->whereHas('category', function ($query) use ($request) {
+                    $query->where('name', 'like', '%' . $request->category_name . '%');
+                });
+            }
+            if ($request->has('name')) {
+                $products->where('name', 'like', '%' . $request->name . '%');
+            }
 
-        return response()->json($products);
+            if ($request->has('order_by') && $request->order_by === 'rating') {
+                $direction = $request->has('direction') && $request->direction === 'desc' ? 'desc' : 'asc';
+                $products->orderBy('rating', $direction);
+            }
+
+            return $products->with('reviews')->paginate(15);
+        });
     }
+
 
     public function updateProduct($id,$request): JsonResponse
     {
