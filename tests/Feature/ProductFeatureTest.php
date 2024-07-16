@@ -17,6 +17,7 @@ class ProductFeatureTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->artisan('passport:install');
         $this->artisan('db:seed', ['--class' => 'RoleSeeder']);
         $this->artisan('db:seed', ['--class' => 'CategorySeeder']);
         $this->artisan('db:seed', ['--class' => 'ProductSeeder']);
@@ -34,7 +35,6 @@ class ProductFeatureTest extends TestCase
     {
         $token = $this->getUserToken();
 
-        dd($token);
         $category = Category::first();
 
         $requestData = [
