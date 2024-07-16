@@ -7,23 +7,31 @@ services:
         ports:
             - "8000:80"
         depends_on:
-            - mysql
+            - mariadb
             - redis
         environment:
-            - APACHE_RUN_USER=#1000
-            - APACHE_RUN_GROUP=#1000
-    mysql:
-        image: mysql:8.0
+            - APACHE_RUN_USER=www-data
+            - APACHE_RUN_GROUP=www-data
+    mariadb:
+        image: mariadb:10.4.32
         environment:
             MYSQL_DATABASE: laravel_db
             MYSQL_USER: laravel_user
             MYSQL_PASSWORD: laravel_password
             MYSQL_ROOT_PASSWORD: root_password
         volumes:
-            - mysql_data:/var/lib/mysql
+            - mariadb_data:/var/lib/mysql
     redis:
         image: redis:latest
         ports:
             - "6379:6379"
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:5.2.1
+        ports:
+            - "8080:80"
+        environment:
+            PMA_ARBITRARY: '1'
+            PMA_HOST: mariadb
 volumes:
     mysql_data:
+    mariadb_data:
